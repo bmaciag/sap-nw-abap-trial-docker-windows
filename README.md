@@ -76,7 +76,7 @@ These steps were copied directly from Nabi Zamani's [GitHub Repo](https://github
 1.  Updating License
     -   Open SAP GUI and logon
         -   **User:**  SAP*
-        -   **Password:**  Down1oad
+        -   **Password:**  Down1oad (Appl1ance for NW751)
         -   **Client:**  000
     -   Open Transaction  `SLICENSE`
     -   From the Screen copy the value of field  `Active Hardware Key`
