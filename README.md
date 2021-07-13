@@ -109,3 +109,25 @@ These steps were copied directly from Nabi Zamani's [GitHub Repo](https://github
     -   Test the HTTP and HTTPS connection with your browser
         -   **HTTP:**  [http://localhost:8000/sap/public/ping](http://localhost:8000/sap/public/ping)
         -   **HTTPS:**  [https://localhost:44300/sap/public/ping](https://localhost:44300/sap/public/ping)
+
+## Starting and Stopping the NW ABAP 7.52 Trial
+
+1. Starting the container + SAP NW ABAP Trial (use this from now on instead of `docker run ...` from above)
+
+    ```sh
+    docker start -i nwabap752
+    /usr/sbin/uuidd
+    su npladm
+    startsap ALL
+    ```
+
+1. Stopping SAP NW ABAP Trial and container (`ALL` can be omitted)
+
+    ```sh
+    su npladm
+    stopsap ALL
+    exit
+    exit
+    ```
+
+    **Hint:** After the second `exit` the Docker container is stopped.
