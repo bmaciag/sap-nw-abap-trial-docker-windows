@@ -92,7 +92,7 @@ These steps were copied directly from Nabi Zamani's [GitHub Repo](https://github
     
     You can now logon to  `client 001`  with any of the following users (all share the same password  `Down1oad`, typically you would work with  `DEVELOPER`):
     
-    -   **User:**  DEVELOPER (Developer User)
+    -   **User:**  DEVELOPER (Developer User) [Key 12222845243181034647]
     -   **User:**  BWDEVELOPER (Developer User)
     -   **User:**  DDIC (Data Dictionary User)
     -   **User:**  SAP* (SAP Administrator)
