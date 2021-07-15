@@ -32,36 +32,23 @@ git clone https://github.com/brandoncaulfield/sap-nw-abap-trial-docker-windows
 5. Open Command Prompt or PowerShell and navigate to the local repo folder and run the docker build command:
 
 ```sh
-docker build -t nwabap:7.52 .
+docker build -t nwabap:7.51 .
 ```
 
-6. Once the build has finished you need to adjust your **vm.max_map_count=1000000**. From a new Command Prompt or Powershell window run the following commands:
+6. Then run your docker container
 
 ```sh
-wsl -d docker-desktop
-sysctl -w vm.max_map_count=1000000
+docker run --privileged -p 8000:8000 -p 44300:44300 -p 3300:3300 -p 3200:3200 -h vhcalnplci --name nwabap751 -it nwabap:7.51 /bin/bash
 ```
 
-Check that the vm.max_map_count has actually changed by running this command:
-
-```sh
-sysctl vm.max_map_count
-```
-
-7. Then run your docker container
-
-```sh
-docker run -p 8000:8000 -p 44300:44300 -p 3300:3300 -p 3200:3200 -h vhcalnplci --name nwabap752 -it nwabap:7.52 /bin/bash
-```
-
-8. Once your container is running you need to begin installing the SAP system. The password you select during the installation should be at least 8 characters long. This could take a while so be patient! :)
+7. Once your container is running you need to begin installing the SAP system. The password you select during the installation should be at least 8 characters long. This could take a while so be patient! :)
 
 ```sh
 /usr/sbin/uuidd
 ./install.sh
 ```
 
-9. Once the SAP system is installed successfully start the new SAP system by running the following commands:
+8. Once the SAP system is installed successfully start the new SAP system by running the following commands:
 
 ```sh
 su npladm
@@ -110,9 +97,9 @@ These steps were copied directly from Nabi Zamani's [GitHub Repo](https://github
         -   **HTTP:**  [http://localhost:8000/sap/public/ping](http://localhost:8000/sap/public/ping)
         -   **HTTPS:**  [https://localhost:44300/sap/public/ping](https://localhost:44300/sap/public/ping)
 
-## Starting and Stopping the NW ABAP 7.52 Trial
+## Starting and Stopping
 
-1. Starting the container + SAP NW ABAP Trial (use this from now on instead of `docker run ...` from above)
+1. Starting 
 
     ```sh
     docker start -i nwabap752
@@ -121,7 +108,7 @@ These steps were copied directly from Nabi Zamani's [GitHub Repo](https://github
     startsap ALL
     ```
 
-1. Stopping SAP NW ABAP Trial and container (`ALL` can be omitted)
+1. Stopping 
 
     ```sh
     su npladm
@@ -129,5 +116,3 @@ These steps were copied directly from Nabi Zamani's [GitHub Repo](https://github
     exit
     exit
     ```
-
-    **Hint:** After the second `exit` the Docker container is stopped.
